@@ -10,6 +10,7 @@ export class FormularioComponent implements OnInit {
 
   
   public formLogin:FormGroup;
+  public error:boolean = false;
 
   constructor(private formBuilder:FormBuilder) { }
 
@@ -20,4 +21,11 @@ export class FormularioComponent implements OnInit {
     })
   }
 
+  redirect(){
+    if(this.formLogin.valid){
+        window.location.href = "https://www.youtube.com/watch?v=DLzxrzFCyOs";
+    }else{
+      this.error = true;
+    }
+  }
 }

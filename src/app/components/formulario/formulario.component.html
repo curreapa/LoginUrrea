@@ -1,21 +1,28 @@
 <div class="container">
     <div class="row">
-        <form class="col-4 offset-4 formulario" [formGroup]="formLogin" >
+        <form class="col-4 offset-4 formulario" [formGroup]="formLogin" (submit)="redirect()">
             <div class="h3" >Bienvenido</div>
             <br>
             <div class="mb-3 row">
                 <div class="col-sm-10">
-                    <input type="email" class="form-control" placeholder="Correo Electronico" formControlName="correo">
+                    <input type="email" id="correo" class="form-control"
+                    placeholder="Correo Electronico" formControlName="correo" >
                 </div>
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-10">
-                    <input type="password" class="form-control" placeholder="Contraseña"  formControlName="contrasena">
+                    <input type="password" id="contrasena" class="form-control" placeholder="Contraseña"  formControlName="contrasena">
                 </div>
+            </div>
+            <div class="row error" *ngIf="error">
+                <p>El correo electronico o contraseña no se ingresaron de manera correcta.</p>
+                <p>POSIBLES CAUSAS</p>
+                <p>• La contraseña debe contener minimo 8 caracteres.</p>
+                <p>• El correo electronico no corresponde a una direccion valida.</p>
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-10 btn">
-                        <button type="submit" class="btn btn-primary mb-3" [disabled]="formLogin.invalid" >Iniciar Sesion</button>
+                        <button type="submit" class="btn btn-primary mb-3" >Iniciar Sesion</button>
                         <button type="submit" class="btn btn-success mb-3">Registrar</button>
                 </div>
             </div>
